@@ -25,7 +25,7 @@ SECRET_KEY = 'jr&0*cf5&+vv+bml6p4ycl-1dqlju&0$zulmpq_sr)^)0oqh%&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-tee24-tasteofafrica-1kyo6pfi0a7.ws.codeinstitute-ide.net',]
+ALLOWED_HOSTS = ['8000-tee24-tasteofafrica-1kyo6pfi0a7.ws.codeinstitute-ide.net', 'localhost']
 
 
 # Application definition
