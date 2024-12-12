@@ -6,9 +6,22 @@ html {
 }
 
 body {
-    height: calc(100vh - 164px);
+    height: calc(100vh - 120px);
     color: black;
     font-family: "Newsreader", serif;
+}
+
+.header-container {
+    height: 200px;
+}
+
+header {
+    padding-top: 15px;
+}
+
+#top-icons {
+    display: flex;
+    justify-content: end;
 }
 
 /* from Bulma */
@@ -40,19 +53,6 @@ body {
     color: white;
 }
 
-/* .btn-outline-black {
-    background: white;
-    color: black !important; 
-    border: 1px solid black;
-}
-
-.btn-outline-black:hover,
-.btn-outline-black:active,
-.btn-outline-black:focus {
-    background: black;
-    color: white !important;
-} */
-
 .order-now-button:hover,
 .order-now-button:active,
 .order-now-button:focus,
@@ -80,17 +80,9 @@ body {
     }
   }
 
-  /* fixed top navbar only on medium and up */
+  /* ?? */
 @media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
-    }
-
     .header-container {
-        padding-top: 164px;
+        height: 120px;
     }
 }
