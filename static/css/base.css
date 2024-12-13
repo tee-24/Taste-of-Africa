@@ -77,6 +77,11 @@ header {
     border: 1px solid black !important;
 }
 
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
