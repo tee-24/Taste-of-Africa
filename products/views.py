@@ -17,7 +17,6 @@ def mains(request):
 def sides(request):
     """ A view to show all sides, including sorting """
 
-
     # Filter products by category 'sides'
     products = Product.objects.filter(category=2)
 
