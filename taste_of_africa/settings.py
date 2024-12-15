@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['8000-tee24-tasteofafrica-1kyo6pfi0a7.ws.codeinstitute-ide.net', 'localhost', 'taste-of-africa1.herokuapp.com']
+ALLOWED_HOSTS = ['8000-tee24-tasteofafrica-1kyo6pfi0a7.ws.codeinstitute-ide.net', 'localhost', 'https://taste-of-africa1-bf0b34b123c0.herokuapp.com/']
 
 
 # Application definition
