@@ -1,5 +1,28 @@
 
+# Technologies Used
+-   **Backend**: Python, Django Framework
+    
+-   **Frontend**: HTML, CSS, Bootstrap, JavaScript
+    
+-   **Database**: SQLite (development), PostgreSQL (production)
+    
+-   **Payment Integration**: Stripe
+    
+-   **Deployment**: Heroku
+    
+-   **Static Files**: AWS S3 Bucket (production), Django static files (development)
 
+-    **Git**: Version control
+    
+-   **GitPod**: Online IDE for development
+    
+-   **GitBash**: Command-line interface for Git
+    
+-   **GitHub**: Code hosting
+
+-   **Google Dev Tools**: Debugging and performance optimization
+    
+-   **Google Fonts**: Custom typography
 
 ## Local Development
 ### How to Fork
