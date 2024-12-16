@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Product, Review, Favourites
+from django.core.mail import send_mail
 
+import os
 
-from .forms import ProductForm
+from .forms import ProductForm, ContactForm
 
 def category_view(request, category_id):
     """ A view to show products by category, including sorting """
@@ -154,3 +156,31 @@ def favourites(request):
         'favourite_products': favourite_products,
     }
     return render(request, 'products/favourites.html', context)
+
+def contact_us(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            contact_message = form.save() 
+            if 'DEVELOPMENT' in os.environ:
+                admin_email = 'boutiqueado@example.comm'  # Replace with your admin email for development
+            else:
+                admin_email = os.environ.get('EMAIL_HOST_USER')  # Replace with your admin email for production
+
+            send_mail(
+                f"New Contact Us Message: {contact_message.subject}",
+                contact_message.message,
+                contact_message.email,
+                [admin_email],  
+                fail_silently=False,
+            )
+            messages.success(request, 'Your message has been sent successfully!')
+            return redirect('contact_us')  # Redirect to avoid resubmission
+    else:
+        form = ContactForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'products/contact_us.html', context)
