@@ -6,13 +6,9 @@ html {
 }
 
 body {
-    height: calc(100vh - 120px);
+    height: calc(100vh - 185px);
     color: black;
     font-family: "Newsreader", serif;
-}
-
-.header-container {
-    height: 200px;
 }
 
 header {
@@ -22,6 +18,17 @@ header {
 #top-icons {
     display: flex;
     justify-content: end;
+}
+
+.pics {
+    width: 270px;
+    height: 270px;
+    object-fit: cover;
+}
+
+.fav-btn {
+    font-size: 10px;
+    margin-bottom: 10px;
 }
 
 /* From Bulma */
@@ -162,7 +169,7 @@ header {
   /* ?? */
 @media (min-width: 992px) {
     .header-container {
-        padding-top: 120px;
+        padding-top: 185px;
     }
 }
 
