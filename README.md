@@ -41,3 +41,6 @@ To clone the Taste of Africa  repository:
 6. Type 'git clone' into the terminal 
 7.  Paste the link you copied in step 3
 8. Press enter
+
+# Acknowledgements
+This app was designed and developed in conjunction with the Full Stack Software Developer Diploma course (ecommerce) at the Code Institute. I would like to thank my mentor, Matt, the Slack community, and Code Institute for all their support.
