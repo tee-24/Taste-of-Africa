@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Product
+from .models import Product, Review
 
 
 from .forms import ProductForm
@@ -103,3 +103,28 @@ def delete_product(request, product_id):
         return redirect(reverse('category_view', args=[category_id]))
     else:
         return redirect(reverse('category_view', kwargs={'category_id': 'all'}))
+
+@login_required
+def add_review(request, product_id):
+    """ Add a review for a product """
+
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.method == 'POST':
+        rating = request.POST.get('rating')
+        comment = request.POST.get('comment')
+
+        # Create the review
+        Review.objects.create(
+            user=request.user,
+            product=product,
+            rating=rating,
+            comment=comment
+        )
+
+        return redirect('product_detail', product_id=product_id)
+
+    context = {
+    'products': products,
+}
+    return render(request, 'products/product_detail.html', context)
