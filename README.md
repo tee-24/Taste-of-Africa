@@ -1,4 +1,53 @@
 
+
+# User Experience (UX)
+## Target Audience
+* Users who enjoy African dishes
+* Users who enjoy exploring diverse cuisines and unique food experiences
+* Users who need quick, convenient meal solutions delivered to their doorstep
+* Users who may find grocery shopping or meal preparation challenging and require convenient, ready-to-eat meals
+
+## Epics & User Stories
+1. Epic - Viewing and Navigation
+* [View a list of products](https://github.com/tee-24/Taste-of-Africa/issues/1)
+* [View individual product details](https://github.com/tee-24/Taste-of-Africa/issues/3)
+* [View cart total at any time](https://github.com/tee-24/Taste-of-Africa/issues/4)
+
+2. Epic - Registration and User Accounts
+* [User registration](https://github.com/tee-24/Taste-of-Africa/issues/5)
+* [User login/logout](https://github.com/tee-24/Taste-of-Africa/issues/6)
+* [Forgot password](https://github.com/tee-24/Taste-of-Africa/issues/7)
+* [Email confirmation after registration](https://github.com/tee-24/Taste-of-Africa/issues/8)
+* [User profile](https://github.com/tee-24/Taste-of-Africa/issues/9)
+
+3. Epic - Sorting
+* [Sort products](https://github.com/tee-24/Taste-of-Africa/issues/10)
+
+4. Epic - Purchasing and Checkout
+* [Select product quantity](https://github.com/tee-24/Taste-of-Africa/issues/11)
+* [View and review cart before checkout](https://github.com/tee-24/Taste-of-Africa/issues/12)
+* [Provide delivery information](https://github.com/tee-24/Taste-of-Africa/issues/13)
+* [Provide payment information](https://github.com/tee-24/Taste-of-Africa/issues/14)
+* [Order confirmation](https://github.com/tee-24/Taste-of-Africa/issues/15)
+
+5. Epic - Admin and Store Management
+* [Add products](https://github.com/tee-24/Taste-of-Africa/issues/16)
+* [Edit products](https://github.com/tee-24/Taste-of-Africa/issues/17)
+* [Delete products](https://github.com/tee-24/Taste-of-Africa/issues/18)
+
+## App Aims
+The primary aim of this e-commerce application is to provide users with a seamless shopping experience. The platform offers:
+
+-   An extensive catalog of products with detailed descriptions.
+    
+-   A user-friendly shopping interface for quick and easy transactions.
+    
+-   Secure payment processing to ensure user trust.
+- 
+-   Features such as favorites, reviews, and a contact form to enhance user satisfaction.
+    
+-   Tools for admins to manage products, orders, and user feedback effectively.
+
 # Technologies Used
 -   **Backend**: Python, Django Framework
     
