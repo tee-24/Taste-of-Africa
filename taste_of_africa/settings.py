@@ -27,7 +27,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-tee24-tasteofafrica-1kyo6pfi0a7.ws.codeinstitute-ide.net', 'localhost', 'taste-of-africa1.herokuapp.com', 'taste-of-africa1-bf0b34b123c0.herokuapp.com']
 

@@ -6,45 +6,16 @@ from .models import Product
 
 from .forms import ProductForm
 
-def mains(request):
-    """ A view to show all mains, including sorting """
+def category_view(request, category_id):
+    """ A view to show products by category, including sorting """
 
-    # Filter products by category 'mains'
-    products = Product.objects.filter(category=1)
-
-    context = {
-        'products': products,
-    }
-
-    return render(request, 'products/products.html', context)
-
-def sides(request):
-    """ A view to show all sides, including sorting """
-
-    # Filter products by category 'sides'
-    products = Product.objects.filter(category=2)
-
+    # Filter products by the given category
+    products = Product.objects.filter(category=category_id)
+    category_id = 'all'
 
     context = {
         'products': products,
     }
-
-
-    return render(request, 'products/products.html', context)
-
-
-def drinks(request):
-    """ A view to show all drinks, including sorting """
-
-
-    # Filter products by category 'drinks'
-    products = Product.objects.filter(category=3)
-
-
-    context = {
-        'products': products,
-    }
-
 
     return render(request, 'products/products.html', context)
 
@@ -121,6 +92,14 @@ def delete_product(request, product_id):
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
+    category = product.category
+    category_id = category.id if category else None
+
     product.delete()
+
     messages.success(request, 'Product deleted!')
-    return redirect(reverse('mains'))
+
+    if category_id:
+        return redirect(reverse('category_view', args=[category_id]))
+    else:
+        return redirect(reverse('category_view', kwargs={'category_id': 'all'}))
