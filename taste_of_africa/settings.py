@@ -70,8 +70,6 @@ ROOT_URLCONF = 'taste_of_africa.urls'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-tee24-tasteofafrica-1kyo6pfi0a7.ws.codeinstitute-ide.net']
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
