@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Product, Review
+from .models import Product, Review, Favourites
 
 
 from .forms import ProductForm
@@ -128,3 +128,29 @@ def add_review(request, product_id):
     'products': products,
 }
     return render(request, 'products/product_detail.html', context)
+
+@login_required
+def toggle_favourite(request, product_id):
+
+    product = get_object_or_404(Product, id=product_id)
+    
+    if request.user.is_authenticated:
+        favourite, created = Favourites.objects.get_or_create(user=request.user, product=product)
+        
+        if not created:
+            favourite.delete()  # If the favorite already exists, remove it
+        return redirect('product_detail', product_id=product_id)
+    
+    return redirect('login')  
+
+@login_required
+def favourites(request):
+    """ View to display the products that the user has marked as favourites """
+    
+    user_favourites = Favourites.objects.filter(user=request.user)
+    favourite_products = [favourite.product for favourite in user_favourites]
+    
+    context = {
+        'favourite_products': favourite_products,
+    }
+    return render(request, 'products/favourites.html', context)

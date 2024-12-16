@@ -37,3 +37,13 @@ class Review(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.product.name} ({self.rating}/5)"
+
+class Favourites(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favourites')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='favourited_by')
+
+    class Meta:
+        unique_together = ('user', 'product')  # Ensure a user can't favorite the same product multiple times
+
+    def __str__(self):
+        return f"{self.user.username} - {self.product.name}"
