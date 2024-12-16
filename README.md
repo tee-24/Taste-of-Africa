@@ -42,5 +42,9 @@ To clone the Taste of Africa  repository:
 7.  Paste the link you copied in step 3
 8. Press enter
 
+# Bugs
+### Known Bugs
+The button to add an item to favorites should change from 'Add to Favorites' to 'Remove from Favorites' if the item has already been added to favorites
+
 # Acknowledgements
 This app was designed and developed in conjunction with the Full Stack Software Developer Diploma course (ecommerce) at the Code Institute. I would like to thank my mentor, Matt, the Slack community, and Code Institute for all their support.
