@@ -9,6 +9,6 @@ urlpatterns = [
     path('delete/<int:product_id>/', views.delete_product, name='delete_product'),
     path('<int:product_id>/review/', views.add_review, name='add_review'),
     path('<int:product_id>/toggle_favourite/', views.toggle_favourite, name='toggle_favourite'),
-    path('products:favourites/', views.favourites, name='favourites'),
+    path('favourites/', views.favourites, name='favourites'),
     path('contact_us/', views.contact_us, name='contact_us')
 ]

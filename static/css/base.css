@@ -26,6 +26,11 @@ header {
     object-fit: cover;
 }
 
+.fav-link {
+    text-decoration: underline;
+    color: #000;
+}
+
 .fav-btn {
     font-size: 10px;
     margin-bottom: 10px;

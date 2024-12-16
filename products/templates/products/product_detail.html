@@ -30,21 +30,20 @@
             <div class="product-details-container mb-5 mt-md-5">
                 <!-- Add to favourites -->
                 {% if request.user.is_authenticated %}
-                <a href="{% url 'favourites' %}">View Favourites</a>
+                <a href="{% url 'favourites' %}" class="fav-link">View Favourites</a>
     <form action="{% url 'toggle_favourite' product.id %}" method="post">
         {% csrf_token %}
-        <button type="submit" class="btn btn-black rounded-0 text-uppercase mt-5 fav-btn">
+        <button type="submit" class="btn btn-black rounded-0 text-uppercase mt-1 fav-btn">
             {% if product in request.user.favourites.all %}
                 Remove from Favorites
             {% else %}
                 Add to Favorites
             {% endif %}
         </button>
-    
-{% else %}
-    <a href="{% url 'account_login' %}" class="btn btn-black rounded-0 text-uppercase mt-5 fav-btn">Login to add to Favorites</a>
-{% endif %}
 </form>
+{% else %}
+    <a href="{% url 'account_login' %}" class="btn btn-black rounded-0 text-uppercase mt-1 fav-btn">Login to add to Favorites</a>
+{% endif %}
                 <p class="mb-0">{{ product.name }}</p>
                 <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                 {% if request.user.is_superuser %}
@@ -71,7 +70,7 @@
                         <label for="comment">Comment</label>
                         <textarea name="comment" id="comment" class="form-control" rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-black rounded-0 text-uppercase mt-5">Submit Review</button>
+                    <button type="submit" class="btn btn-black rounded-0 text-uppercase mt-1">Submit Review</button>
                 </form>
                 <!-- Reviews Section -->
 <div class="col-12 mt-5">
