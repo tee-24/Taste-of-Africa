@@ -104,6 +104,13 @@ The font chosen was Newsreader
 
 - **Mobile App Integration**: Develop a mobile application for easier access and ordering.
 
+# Social Media Marketing
+For the purposes of the assessment a Facebook page was created for the company. As a key foundation for any ecommerce website's marketing strategy social media would form a key part of the businesses marketing strategy. The page included links to the main website to drive traffic from the social network to the site. 
+
+![](media/fb1.png)
+![](media/fb2.png)
+![](media/fb3.png)
+
 # Technologies Used
 -   **Backend**: Python, Django Framework
     
