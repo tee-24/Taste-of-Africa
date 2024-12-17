@@ -1,4 +1,9 @@
+# Taste of Africa
+## Introduction
+This project is a fully functional e-commerce website where users can browse products, add them to a shopping bag, and complete purchases. The platform includes user authentication, a checkout system, and the ability to manage user profiles and orders.
 
+You can view the live site here - [Taste of Africa](https://taste-of-africa1-bf0b34b123c0.herokuapp.com/)
+![AmIResponsive](media/responsive.png)
 
 # User Experience (UX)
 ## Target Audience
