@@ -48,6 +48,16 @@ The primary aim of this e-commerce application is to provide users with a seamle
     
 -   Tools for admins to manage products, orders, and user feedback effectively.
 
+# Design
+## Color Scheme
+The final color scheme chosen was a simple black and white
+* Edit link is blue
+* Delete link is red
+* Text is black
+
+### Typography 
+The font chosen was Newsreader
+
 # Features
 
 -   **User Authentication**: 
