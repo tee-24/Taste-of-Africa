@@ -198,9 +198,24 @@ To clone the Taste of Africa  repository:
 7.  Paste the link you copied in step 3
 8. Press enter
 
+# Testing
+Testing was ongoing throughout the entire build. I utilized Chrome developer tools while building to pinpoint and troubleshoot any issues as I went along.
+
+### Code Institute Python Linter
+Validation was done using [CI Python Linter](https://pep8ci.herokuapp.com/) 
+
+### Manual Testing
+To fully test my app, I performed the following tests:
+
+
 # Bugs
 ### Known Bugs
 The button to add an item to favorites should change from 'Add to Favorites' to 'Remove from Favorites' if the item has already been added to favorites
 
+# Credits
+* Fonts were sourced from [Google Fonts](https://fonts.google.com/)
+ * Icons were sourced from [Font Awesome](https://fontawesome.com/)
+ * Datasets were sourced from [Kaggle](https://www.kaggle.com/datasets/franklycypher/nigerian-foods)
+ 
 # Acknowledgements
 This app was designed and developed in conjunction with the Full Stack Software Developer Diploma course (ecommerce) at the Code Institute. I would like to thank my mentor, Matt, the Slack community, and Code Institute for all their support.
