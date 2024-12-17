@@ -30,24 +30,25 @@
                 <!-- Add to favourites -->
                 {% if request.user.is_authenticated %}
                 <a href="{% url 'favourites' %}" class="fav-link">View Favourites</a>
-    <form action="{% url 'toggle_favourite' product.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-black rounded-0 text-uppercase mt-1 fav-btn">
-            {% if product in request.user.favourites.all %}
-                Remove from Favorites
-            {% else %}
-                Add to Favorites
-            {% endif %}
-        </button>
-</form>
-{% else %}
-    <a href="{% url 'account_login' %}" class="btn btn-black rounded-0 text-uppercase mt-1 fav-btn">Login to add to Favorites</a>
-{% endif %}
+                <form action="{% url 'toggle_favourite' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-black rounded-0 text-uppercase mt-1 fav-btn">
+                        {% if product in request.user.favourites.all %}
+                        Remove from Favorites
+                        {% else %}
+                        Add to Favorites
+                        {% endif %}
+                    </button>
+                </form>
+                {% else %}
+                <a href="{% url 'account_login' %}" class="btn btn-black rounded-0 text-uppercase mt-1 fav-btn">Login to
+                    add to Favorites</a>
+                {% endif %}
                 <p class="mb-0">{{ product.name }}</p>
                 <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                 {% if request.user.is_superuser %}
                 <small class="ml-3">
-                    <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                    <a href="{% url 'edit_product' product.id %}">Edit</a> |
                     <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
                 </small>
                 {% endif %}
@@ -59,10 +60,10 @@
                         <label for="rating">Rating</label>
                         <select name="rating" id="rating" class="form-control">
                             <option value="1">1 - Poor</option>
-                        <option value="2">2 - Fair</option>
-                        <option value="3">3 - Good</option>
-                        <option value="4">4 - Very Good</option>
-                        <option value="5">5 - Excellent</option>
+                            <option value="2">2 - Fair</option>
+                            <option value="3">3 - Good</option>
+                            <option value="4">4 - Very Good</option>
+                            <option value="5">5 - Excellent</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -72,21 +73,21 @@
                     <button type="submit" class="btn btn-black rounded-0 text-uppercase mt-1">Submit Review</button>
                 </form>
                 <!-- Reviews Section -->
-<div class="col-12 mt-5">
-    <h3>Customer Reviews</h3>
-    <hr>
-    {% for review in reviews %}
-        <div class="review-item">
-            <small>Reviewed on {{ review.created_at }}</small>
-            <p class="mb-0"><strong>User:</strong> {{ review.user.username |title}}</p>
-            <strong>Rating:</strong> {{ review.rating }}/5
-            <p>- {{ review.comment }}</p>
-        </div>
-        <hr>
-    {% empty %}
-        <p>No reviews yet.</p>
-    {% endfor %}
-</div>
+                <div class="col-12 mt-5">
+                    <h3>Customer Reviews</h3>
+                    <hr>
+                    {% for review in reviews %}
+                    <div class="review-item">
+                        <small>Reviewed on {{ review.created_at }}</small>
+                        <p class="mb-0"><strong>User:</strong> {{ review.user.username |title}}</p>
+                        <strong>Rating:</strong> {{ review.rating }}/5
+                        <p>- {{ review.comment }}</p>
+                    </div>
+                    <hr>
+                    {% empty %}
+                    <p>No reviews yet.</p>
+                    {% endfor %}
+                </div>
                 <!-- Add to bag section -->
                 <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                     {% csrf_token %}
@@ -94,19 +95,22 @@
                         <div class="col-12">
                             <p class="mt-3"><strong>Quantity:</strong></p>
                             <div class="form-group w-50">
-                                <div class="input-group input-group-{{ product.id }}"> 
+                                <div class="input-group input-group-{{ product.id }}">
                                     <div class="input-group-prepend">
-                                        <button class="decrement-qty btn btn-black rounded-0 decrement-qty_{{ product.id }}" 
-                                                data-item_id="{{ product.id }}">
+                                        <button
+                                            class="decrement-qty btn btn-black rounded-0 decrement-qty_{{ product.id }}"
+                                            data-item_id="{{ product.id }}">
                                             <span class="icon">
                                                 <i class="fas fa-minus"></i>
                                             </span>
                                         </button>
                                     </div>
-                                    <input class="form-control qty_input id_qty_{{ product.id }}" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}">
+                                    <input class="form-control qty_input id_qty_{{ product.id }}" type="number"
+                                        name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}">
                                     <div class="input-group-append">
-                                        <button class="increment-qty btn btn-black rounded-0 increment-qty_{{ product.id }}"
-                                        data-item_id="{{ product.id }}"> 
+                                        <button
+                                            class="increment-qty btn btn-black rounded-0 increment-qty_{{ product.id }}"
+                                            data-item_id="{{ product.id }}">
                                             <span class="icon">
                                                 <i class="fas fa-plus"></i>
                                             </span>
@@ -138,4 +142,3 @@
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}
-

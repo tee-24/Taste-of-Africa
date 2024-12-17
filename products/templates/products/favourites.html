@@ -1,38 +1,39 @@
 {% extends "base.html" %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="col text-center mt-3">
-            <h2 class="logo-font">Favourites</h2>
-            <hr class="w-50 mb-1">
-        </div>
-        {% if favourite_products %}
-            <div class="row">
-                {% for product in favourite_products %}
-                    <div class="col-md-4">
-                        <div class="card mb-4">
-                            <a href="{% url 'product_detail' product.id %}">
-                                <img src="{{ product.image.url }}" class="card-img-top pics" alt="{{ product.name }}">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ product.name }}</h5>
-                                <p class="card-text">${{ product.price }}</p>
-                                <a href="{% url 'product_detail' product.id %}" class="btn btn-black rounded-0 text-uppercase mt-5">View Product</a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p>You have no favorite products yet.</p>
-        {% endif %}
+<div class="container">
+    <div class="col text-center mt-3">
+        <h2 class="logo-font">Favourites</h2>
+        <hr class="w-50 mb-1">
     </div>
+    {% if favourite_products %}
+    <div class="row">
+        {% for product in favourite_products %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <a href="{% url 'product_detail' product.id %}">
+                    <img src="{{ product.image.url }}" class="card-img-top pics" alt="{{ product.name }}">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">${{ product.price }}</p>
+                    <a href="{% url 'product_detail' product.id %}"
+                        class="btn btn-black rounded-0 text-uppercase mt-5">View Product</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>You have no favorite products yet.</p>
+    {% endif %}
+</div>
 {% endblock %}
