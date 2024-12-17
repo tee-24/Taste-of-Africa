@@ -48,6 +48,38 @@ The primary aim of this e-commerce application is to provide users with a seamle
     
 -   Tools for admins to manage products, orders, and user feedback effectively.
 
+# Features
+
+-   **User Authentication**: 
+    -   Account registration.
+    -   Login.       
+    -   Manage profiles.
+
+-   **Product Management**:
+    -   Add new products to the store.
+    -   Edit existing products.      
+    -   Delete existing products.
+    
+ -   **Product Catalog Management**:
+    -   View detailed product pages.       
+    -   Add products to a shopping bag.
+        
+-   **Checkout Process**:   
+    -   Secure payments using Stripe.        
+    -   Order confirmation via email.
+        
+-   **Favorites**:   
+    -   Users can save favorite products for later.
+        
+-   **Reviews**:    
+    -   Users can submit product reviews and ratings.
+        
+-   **Contact Us**:    
+    -   Submit inquiries via a contact form.
+        
+-   **Admin Features**:    
+    -   Manage products, orders, and user feedback through the admin panel.
+
 ## Future Implementations
 -   **Dynamic Recommendations**: Show users personalized product suggestions.
     
