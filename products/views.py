@@ -1,18 +1,18 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404
+)
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
-from .models import Product, Review, Favourites
 from django.core.mail import send_mail
+from .models import Product, Review, Favourites
+from .forms import ProductForm, ContactForm
 
 import os
 
-from .forms import ProductForm, ContactForm
 
 def category_view(request, category_id):
     """ A view to show products by category, including sorting """
-
-    # Filter products by the given category
     products = Product.objects.filter(category=category_id)
     category_id = 'all'
 
@@ -33,25 +33,16 @@ def category_view(request, category_id):
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
 
-    current_sorting = f'{sort}_{direction}'
-
-    context = {
-        'products': products,
-    }
-
+    context = {'products': products}
     return render(request, 'products/products.html', context)
 
 
 def product_detail(request, product_id):
     """ A view to show individual product details """
-
     product = get_object_or_404(Product, pk=product_id)
-
-    context = {
-        'product': product,
-    }
-
+    context = {'product': product}
     return render(request, 'products/product_detail.html', context)
+
 
 @login_required
 def add_product(request):
@@ -66,17 +57,16 @@ def add_product(request):
             product = form.save()
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
-        else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+        messages.error(
+            request, 'Failed to add product. Please ensure the form is valid.'
+        )
     else:
         form = ProductForm()
-        
-    template = 'products/add_product.html'
-    context = {
-        'form': form,
-    }
 
+    template = 'products/add_product.html'
+    context = {'form': form}
     return render(request, template, context)
+
 
 @login_required
 def edit_product(request, product_id):
@@ -92,19 +82,18 @@ def edit_product(request, product_id):
             form.save()
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
-        else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+        messages.error(
+            request,
+            'Failed to update product. Please ensure the form is valid.'
+        )
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
 
     template = 'products/edit_product.html'
-    context = {
-        'form': form,
-        'product': product,
-    }
-
+    context = {'form': form, 'product': product}
     return render(request, template, context)
+
 
 @login_required
 def delete_product(request, product_id):
@@ -118,18 +107,16 @@ def delete_product(request, product_id):
     category_id = category.id if category else None
 
     product.delete()
-
     messages.success(request, 'Product deleted!')
 
     if category_id:
         return redirect(reverse('category_view', args=[category_id]))
-    else:
-        return redirect(reverse('category_view', kwargs={'category_id': 'all'}))
+    return redirect(reverse('category_view', kwargs={'category_id': 'all'}))
+
 
 @login_required
 def add_review(request, product_id):
     """ Add a review for a product """
-
     product = get_object_or_404(Product, id=product_id)
 
     if request.method == 'POST':
@@ -138,69 +125,64 @@ def add_review(request, product_id):
 
         # Create the review
         Review.objects.create(
-            user=request.user,
-            product=product,
-            rating=rating,
-            comment=comment
+            user=request.user, product=product, rating=rating, comment=comment
         )
-
         return redirect('product_detail', product_id=product_id)
 
-    context = {
-    'products': products,
-}
+    context = {'product': product}
     return render(request, 'products/product_detail.html', context)
+
 
 @login_required
 def toggle_favourite(request, product_id):
-
+    """ Add or remove a product from favourites """
     product = get_object_or_404(Product, id=product_id)
-    
+
     if request.user.is_authenticated:
-        favourite, created = Favourites.objects.get_or_create(user=request.user, product=product)
-        
+        favourite, created = Favourites.objects.get_or_create(
+            user=request.user, product=product
+        )
         if not created:
-            favourite.delete()  # If the favorite already exists, remove it
+            favourite.delete()
         return redirect('product_detail', product_id=product_id)
-    
-    return redirect('login')  
+    return redirect('login')
+
 
 @login_required
 def favourites(request):
     """ View to display the products that the user has marked as favourites """
-    
     user_favourites = Favourites.objects.filter(user=request.user)
     favourite_products = [favourite.product for favourite in user_favourites]
-    
-    context = {
-        'favourite_products': favourite_products,
-    }
+
+    context = {'favourite_products': favourite_products}
     return render(request, 'products/favourites.html', context)
 
+
 def contact_us(request):
+    """ Contact form submission handler """
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            contact_message = form.save() 
-            if 'DEVELOPMENT' in os.environ:
-                admin_email = 'boutiqueado@example.comm'  # Replace with your admin email for development
-            else:
-                admin_email = os.environ.get('EMAIL_HOST_USER')  # Replace with your admin email for production
+            contact_message = form.save()
+            admin_email = (
+                'boutiqueado@example.com'
+                if 'DEVELOPMENT' in os.environ
+                else os.environ.get('EMAIL_HOST_USER')
+            )
 
             send_mail(
                 f"New Contact Us Message: {contact_message.subject}",
                 contact_message.message,
                 contact_message.email,
-                [admin_email],  
+                [admin_email],
                 fail_silently=False,
             )
-            messages.success(request, 'Your message has been sent successfully!')
-            return redirect('contact_us')  # Redirect to avoid resubmission
+            messages.success(request,
+            'Your message has been sent successfully!')
+
+            return redirect('contact_us')
     else:
         form = ContactForm()
 
-    context = {
-        'form': form,
-    }
-
+    context = {'form': form}
     return render(request, 'products/contact_us.html', context)

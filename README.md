@@ -43,7 +43,7 @@ The primary aim of this e-commerce application is to provide users with a seamle
 -   A user-friendly shopping interface for quick and easy transactions.
     
 -   Secure payment processing to ensure user trust.
-- 
+
 -   Features such as favorites, reviews, and a contact form to enhance user satisfaction.
     
 -   Tools for admins to manage products, orders, and user feedback effectively.
