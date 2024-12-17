@@ -48,6 +48,15 @@ The primary aim of this e-commerce application is to provide users with a seamle
     
 -   Tools for admins to manage products, orders, and user feedback effectively.
 
+## Future Implementations
+-   **Dynamic Recommendations**: Show users personalized product suggestions.
+    
+-   **Coupon System**: Add promotional discounts.
+    
+-   **Order Tracking**: Let users track their order status in real-time.
+
+- **Mobile App Integration**: Develop a mobile application for easier access and ordering.
+
 # Technologies Used
 -   **Backend**: Python, Django Framework
     
