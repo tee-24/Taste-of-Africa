@@ -18,7 +18,10 @@ class Category(models.Model):
 
 class Product(models.Model):
     category = models.ForeignKey(
-        'Category', null=True, blank=True, on_delete=models.SET_NULL
+        'Category',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL
     )
     name = models.CharField(max_length=254)
     description = models.TextField()
@@ -33,12 +36,19 @@ class Product(models.Model):
 
 class Review(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='reviews'
+        User,
+        on_delete=models.CASCADE,
+        related_name='reviews'
     )
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='reviews'
+    )
     rating = models.PositiveSmallIntegerField()
     comment = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user.username} - {self.product.name} ({self.rating}/5)"
@@ -46,10 +56,14 @@ class Review(models.Model):
 
 class Favourites(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='favourites'
+        User,
+        on_delete=models.CASCADE,
+        related_name='favourites'
     )
     product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, related_name='favourited_by'
+        Product,
+        on_delete=models.CASCADE,
+        related_name='favourited_by'
     )
 
     class Meta:
