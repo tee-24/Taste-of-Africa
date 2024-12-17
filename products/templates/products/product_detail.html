@@ -75,12 +75,15 @@
                 <!-- Reviews Section -->
 <div class="col-12 mt-5">
     <h3>Customer Reviews</h3>
-    {% for review in product.reviews.all %}
+    <hr>
+    {% for review in reviews %}
         <div class="review-item">
-            <strong>{{ review.user.username }}</strong> ({{ review.rating }}/5)
-            <p>{{ review.comment }}</p>
             <small>Reviewed on {{ review.created_at }}</small>
+            <p class="mb-0"><strong>User:</strong> {{ review.user.username |title}}</p>
+            <strong>Rating:</strong> {{ review.rating }}/5
+            <p>- {{ review.comment }}</p>
         </div>
+        <hr>
     {% empty %}
         <p>No reviews yet.</p>
     {% endfor %}
